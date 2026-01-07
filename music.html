@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>아이폰 음악 플레이어</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: system-ui, -apple-system;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    input {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #1db954;
+      color: white;
+    }
+    audio {
+      margin-top: 30px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎧 내 음악 재생</h1>
+
+  <input type="file" id="fileInput" accept="audio/*">
+  <br>
+  <button onclick="playMusic()">재생</button>
+
+  <audio id="player" controls></audio>
+
+  <script>
+    function playMusic() {
+      const input = document.getElementById('fileInput');
+      const audio = document.getElementById('player');
+
+      if (input.files.length === 0) {
+        alert("음악 파일을 선택해줘!");
+        return;
+      }
+
+      const file = input.files[0];
+      const url = URL.createObjectURL(file);
+      audio.src = url;
+      audio.play();
+    }
+  </script>
+
+</body>
+</html>
